@@ -80,5 +80,5 @@ public class MyServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
     客户端连接上时 channelActive 发送10条消息 到 服务端
     服务端接受到时 channelRead0 显示消息内容及消息次数。
     这时客户端每次请求服务端的消息次数都不一样，这是由于tcp 消息字节流所决定的。
-    ![日志打印：](https://github.com/ilin0/study_node/blob/master/netty/image/2017-12-20%2023.10.33.png)
+    ![image](https://github.com/ilin0/study_node/blob/master/netty/image/2017-12-20%2023.10.33.png)
     如图请示了三次，第一次只有一条消息，第二次有二条消息，第三次有八条消息。
