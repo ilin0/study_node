@@ -1,0 +1,54 @@
+### nio.md
+    复习io
+    对程序语言设计者来说，设计一个令人满意的io系统，是件极艰巨的任务。
+    摘自《Thinking in java》
+
+    读数据的逻辑为：
+    open a stream
+    while more information
+    read information
+    close the stream
+
+    写数据的逻辑为：
+    open a stream 
+    while more information
+    write information
+    close the stream
+
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022502.png)
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022503.png)
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022504.png)
+
+#### 输入流
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022501.png)
+##### 节点流      
+    是直接可以和网络，设备，打交道的
+    FileInputStream
+    ByteArrayInputStream
+    ObjectInputStream
+    PopcdInputStream
+    SequenceInputStream
+    StringBufferInputStream
+ ##### 过滤流
+    FilterInputStream包含的都是过滤流
+
+
+#### 输出流
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022505.png)
+##### 节点流 
+    FileOutputStream
+    ByteArrayOutputStream
+    ObjectOutputStream
+    PipedOutputStream
+
+##### 过滤流
+    FilterOutputStream包含的都过滤流
+
+##### io流的链接
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022506.png)
+
+##### Reader类的层次
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022507.png)
+
+##### Writer类的层次
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022508.png)
