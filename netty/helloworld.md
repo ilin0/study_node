@@ -100,9 +100,9 @@ public class NettyHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
 
 
     通过类的继承关系我们可以看出
-    ![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225145410.png)
-    在 ChannelInboundHandlerAdapter 类中有很多回调事件。
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225145410.png)
 
+    在 ChannelInboundHandlerAdapter 类中有很多回调事件。
     重写以上方法
 ```
     @Override
@@ -140,11 +140,15 @@ public class NettyHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
 ```
 
     通过 curl 命令请求时，它是按顺序打印出以下信息
-    ![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225150014.png)
+
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225150014.png)
+
     而使用浏览器请求时，打印的信息是不规则的 channelInactive 和 channelUnregistered 将不一定会出现。
-    ![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225150053.png)
+
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225150053.png)
+
     当关闭浏览器时『channelInactive 和 channelUnregistered 』就出现了
-    ![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225150203.png)
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/20180225150203.png)
 
     为什么curl就会有呢，因为它是一个完整的url请求工具。而浏览它不是这样的，对于http来说它是一个基于请求和响应的形式，
     对于http1.1协议增加keepAlive时间，保持连接一断时间，时间到了没有新的请求，服务器端会主动关闭
