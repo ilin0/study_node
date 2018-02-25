@@ -39,6 +39,11 @@ public static void main(String[] args){
 
 
 #### 示例2
+        通过NIO读取文件涉及到3个步骤
+    1、从FileInputStream 获取到 FileChannel对象
+    2、创建Buffer
+    3、将数据 从Channel读取到Buffer中。
+
 ```
     public static void main(String[] args) throws Exception{
         FileInputStream fileInputStream = new FileInputStream("nioTest2.txt");
@@ -79,10 +84,7 @@ public static void main(String[] args){
 ```
 
 
-    通过NIO 读取文件涉及到3个步骤
-    1、从FileInputStream 获取到 FileChannel对象
-    2、创建Buffer
-    3、将数据 从Channel读取到Buffer中。
+
 
     绝对方法与相对方法的含义
     1、相对方法，limit 值与position值会在操作时被考虑到。
