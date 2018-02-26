@@ -7,7 +7,7 @@
 ##### 关系
     s:表示Selector、c表示Channel、B表示Buffer
     s包含多个c，而每个c都会有一个B
-![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022515.png)
+![image](https://github.com/ilin0/study_node/raw/master/nio/image/nio2018022515.png)
 
     除了数组之外，buffer还提供了对于数据结构访问方式，并且可以追踪到系统的读写过程。
 

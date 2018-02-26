@@ -19,13 +19,13 @@
 
 #### 图示
     当Buffer初始化6的时候三个属性的关系，position=0，limit = capacity = 6
-![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022516.png)
+![image](https://github.com/ilin0/study_node/raw/master/nio/image/nio2018022516.png)
 
     当position读了二个原素，再读二个原素时，它指向的是第4的索引位置，前4个元素是有值的
-![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022517.png)
+![image](https://github.com/ilin0/study_node/raw/master/nio/image/nio2018022517.png)
 
     调用flip()之后，position=0（它是表示将要读或写的下一个元素的位置），limit=4
-![image](https://github.com/ilin0/study_node/raw/master/netty/image/io2018022518.png)
+![image](https://github.com/ilin0/study_node/raw/master/nio/image/nio2018022518.png)
 
     再写二个元素，position=2，它最大只能写到limit的值。
     如果当前position=3时，再次调用flip()方法之后，position=0，limit=3，也就是说limit会等于当前position的值。
