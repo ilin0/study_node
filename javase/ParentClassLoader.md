@@ -1,7 +1,7 @@
 
 ### 父类加载器
 
-```
+```java
 public class Test8 {
     public static void main(String[] args) {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();

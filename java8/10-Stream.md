@@ -23,7 +23,7 @@
     api 中提供了二个示例代码
 
 #### collect 方法示例：将流转成集合
-```
+```java
     Stream<String> stream = Stream.of("hello", "world", "hello world");
 
     //流转换成 list  Collectors.toList()参数 是一个封闭
@@ -52,7 +52,7 @@
 
 ```
 
-```
+```java
 // 生成 stream 方法
 Stream<String> stream = Stream.generate(UUID.randomUUID()::toString);
 stream.findFirst().get();
@@ -114,16 +114,16 @@ stream1.filter(i -> i >2).mapToInt(i -> i *2).skip(2).limit(2).min().ifPresent(S
 ```
 
 #### 注意事项
-```
-System.out.println(stream1);
+```java
+        System.out.println(stream1);
         System.out.println(stream1.filter(i -> i >2));// 第一次使用
         System.out.println(stream1.distinct());// 第二次使用  
 
-        这样会抛出IllegalStateException异常 stream has already been operated upon or closed。它与i/o 是一致的，一但被操作了是不能被重复使用了。可以采用方法链式的方式
+        //这样会抛出IllegalStateException异常 stream has already been operated upon or closed。它与i/o 是一致的，一但被操作了是不能被重复使用了。可以采用方法链式的方式
 ```
 
 #### stream 的中间操作
-```
+```java
     List<String> list = Arrays.asList("hello", "world", "hello world");
 
         list.stream().map(item -> item.substring(0,1).toUpperCase() + item.substring(1)).forEach(System.out::print);
@@ -146,7 +146,7 @@ System.out.println(stream1);
 ```
 
 #### 陷进示例
-```
+```java
 // 陷阱  limit 与 distinct 位置调换后，程序死循环
         IntStream.iterate(0, i -> (i+1) % 2).distinct().limit(6).forEach(System.out::println);
         上面的distinct 一直在去重，iterate一直在跌代产生01，所以它就死循环

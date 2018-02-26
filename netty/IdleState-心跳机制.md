@@ -3,7 +3,7 @@
 
     服务端通过IdleStateHandler来检测客户端是否还存在
 #### 示例
-```
+```java
 // ChannelInitializer部分代码实现
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {

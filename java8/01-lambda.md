@@ -12,7 +12,7 @@
     4. 接口的任意一个实现肯定会继承Object,所以toString()方法是不会给抽象方法+1的。
 
 #### 示例
-```
+```java
 @FunctionalInterface
 interface MyInterface {
     void test();
@@ -57,7 +57,7 @@ public class Test2{
     Lambda 表达式为java 添加了缺失的函数式编程的特性，使用我们能将函数当做一等公民看待。在将函数作为一等公民的语言中， Lambda表达式的类型是函数。但在java中， Lambda表达式是对象， 他们必须依附于一类特别的对象类型—-函数式接口
 
 #### 示例 说明lambda是一个对象
-```
+```java
 
 @FunctionalInterface
 interface MyInterface1 {
@@ -137,7 +137,7 @@ public class Test3 {
     如果参数只有一个并且参数可以推断，那么圆括号可以省略。主体只有一条语句，花括号也可以省略。
 
 ## 第二个示例   集合的示例（35）
-```
+```java
 public class Test1 {
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8);

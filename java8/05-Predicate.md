@@ -7,7 +7,7 @@
 
 
 #### 场景应用示例
-```
+```java
 public class PredicateTest2 {
 
     public static void main(String[] args) {

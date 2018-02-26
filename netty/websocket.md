@@ -18,7 +18,7 @@
     HttpObjectAggregator它是将http分段的请求合成一个完成的http请求。
 
 #### 示例
-```
+```java
     // ChannelInitializer部分代码
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
@@ -61,7 +61,7 @@ public class NettyWebSocketTextFrameHandler extends SimpleChannelInboundHandler<
 }
 ```
 #### 客户端示例
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>

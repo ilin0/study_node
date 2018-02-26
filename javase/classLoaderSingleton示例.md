@@ -1,6 +1,6 @@
 
 
-```
+```java
 class Singleton {
     
     // 这行在上面结果 是 1和0， 当放到 counter 2 下面时就变成了 1和1 

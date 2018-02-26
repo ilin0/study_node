@@ -22,7 +22,7 @@
     在Linux系统中， 底层操作系统的通道就是双向系统。
 
 #### 示例1
-```
+```java
 public static void main(String[] args){
     IntBuffer buffer = IntBuffer.allocate(10);
 
@@ -44,7 +44,7 @@ public static void main(String[] args){
     2、创建Buffer
     3、将数据 从Channel读取到Buffer中。
 
-```
+```java
     public static void main(String[] args) throws Exception{
         FileInputStream fileInputStream = new FileInputStream("nioTest2.txt");
         FileChannel fileChannel = fileInputStream.getChannel();
@@ -64,7 +64,7 @@ public static void main(String[] args){
 ```
 
 #### 示例3
-```
+```java
     public static void main(String[] args) throws Exception{
 
         FileOutputStream fileOutputStream = new FileOutputStream("nioTest3.txt");

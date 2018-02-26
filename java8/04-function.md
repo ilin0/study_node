@@ -19,7 +19,7 @@
     该方法 总是返回输入参数 ，即参数是什么就返回什么
 
 #### 示例
-```
+```java
     Function<String, String> function = String::toUpperCase;
     System.out.println(function.getClass().getInterfaces()[0]);
 ```
@@ -28,7 +28,7 @@
 
 #### 示例
     function 函数示例
-```
+```java
 public class FunctionTest {
 
     public static void main(String[] args) {
@@ -67,7 +67,7 @@ public class FunctionTest {
 }
 ```
 
-```
+```java
 // 该示例只接受一个参数，返回一个结果
 public class FunctionCompute {
 
@@ -97,7 +97,7 @@ public class FunctionCompute {
     BiFunction 相对于 Function 少了一个compose 方法
 
 #### BiFunction 示例
-```
+```java
     public int compute3(int a, int b, BiFunction<Integer, Integer, Integer> bifunction){
         return bifunction.apply(a, b);
     }
@@ -114,7 +114,7 @@ public class FunctionCompute {
         System.out.println(tests2.compute4(1, 2, (a, b) -> a + b, value -> value * value));
 ```
 
-```
+```java
     // 特殊的实现，参数与返回都一样 简化了一点
     public static void main(String[] args) {
         BinaryOperatorTest test = new BinaryOperatorTest();
@@ -131,7 +131,7 @@ public class FunctionCompute {
     反推：假如有 compose 方法，二个参数先执行参数before BiFunction函数apply方法，得到了一个结果，而执行当前apply方法是需要二个参数，这时我们并没有第二个参数， 所以BiFunction是没有 compose方法的。
 
 #### 应用示例
-```
+```java
 public class PersonTest {
 
     public static void main(String[] args) {

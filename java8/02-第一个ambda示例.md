@@ -1,6 +1,6 @@
 #### 第一个示例  内部类的lambda代替(24-34)
 
-```
+```java
 public class SwingTest {
 
     public static void main(String[] args) {

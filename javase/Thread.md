@@ -41,7 +41,7 @@
     notify方法调用将会任意唤醒一个线程。
 
 #### 线程之间通信示例
-```
+```java
 public class Sample {
     private int number;
     public synchronized void increase() throws Exception{
@@ -63,7 +63,7 @@ public class Sample {
 }
 ```
 
-```
+```java
 public class IncreaseThread extends Thread {
     private Sample sample;
     public IncreaseThread(Sample sample){
@@ -79,14 +79,14 @@ public class IncreaseThread extends Thread {
 }
 ```
 
-```
+```java
 // 做加法的线程与减法的类似
 public class DecreaseThread extends Thread {
 
 }
 ```
 
-```
+```java
     Sample sample = new Sample();
     Thread t1 = new IncreaseThread();
     Thread t2 = new DecreaseThread();

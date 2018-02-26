@@ -1,7 +1,7 @@
 ### socket-example.md
     #### server 示例代码
 
-```
+```java
 public class NettySocketServer {
 
     public static void main(String[] args) throws Exception {
@@ -66,7 +66,7 @@ public class NettySocketServerHandler extends SimpleChannelInboundHandler<String
 ```
 
 #### client 示例
-```
+```java
 public class NettyScoketClient {
     public static void main(String[] args) throws Exception {
 
@@ -129,7 +129,7 @@ public class NettySocketClientHandler extends SimpleChannelInboundHandler<String
 
     它们之前的连接是成功的。
     使用channelActive的回调机制触发客户端向服务端发送一条信息来打破这个僵局
-```
+```java
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush("test");

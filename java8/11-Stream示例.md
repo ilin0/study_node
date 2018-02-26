@@ -1,15 +1,15 @@
 ### Stream 示例.md
     
 
-```
+```java
 //拼接字符串， join 以遇到的顺序，一个接一个的拼接。
 Stream<String> stream = Stream.of("hello", "world", "hello world");
 String str = stream.collect(Collectors.joining()).toString();
 ```
 
 
-```
-这种写法语义更加直观 
+```java
+    //这种写法语义更加直观 
     public static void main(String[] args) {
 
         List<String> stringList = Arrays.asList("hello", "world", "hello world", "test");

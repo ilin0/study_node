@@ -6,7 +6,7 @@
     4. 在派生类中实现Cloneable接口。
 
 #### clone示例
-```
+```java
 public class Student implements Cloneable{
     private int age;
     private String name;

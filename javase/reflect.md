@@ -7,7 +7,7 @@
         Class<?> clazz = s.getClass();
 
 ### 示例
-```
+```java
     public static Object buildObject(Class<?> tClass) throws Exception {
         try {
 

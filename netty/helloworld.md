@@ -11,7 +11,7 @@
     选择本地的gradle ,前提是本也已经安装了gradle。
 
 #### 示例
-```
+```java
     public class NettyService {
     public static void main(String[] args) throws Exception {
 
@@ -88,7 +88,7 @@ public class NettyHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
     如果采用浏览器访问，它会多一个请求，favicon.ico
 
     处理url 路由.增加以下代码
-```
+```java
     HttpRequest httpRequest = (HttpRequest)msg;
     URL url = new URL(httpRequest.uri());
 
@@ -104,7 +104,7 @@ public class NettyHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
 
     在 ChannelInboundHandlerAdapter 类中有很多回调事件。
     重写以上方法
-```
+```java
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         System.out.println("handler added");

@@ -24,7 +24,7 @@
     说明：只有当静态变量与静态方法确实在类中时，才能叫做对类的主动使用
     也就是说从父类继承下来的变量，不能叫做对类的主动使用。
 
-```
+```java
 class Parent3{
     static int a = 3;
     
@@ -63,7 +63,7 @@ public class Test6{
 
 ### 类初始化示例
     说明：调用ClassLoader 只是加载一个类，并不会导致类的初始化。
-```
+```java
 class CL {
     static{
         System.out.println("Class CL");
@@ -88,7 +88,7 @@ public class Test7{
 ```
 
     说明：此示例中的二种为 静态变量 x 赋值的方式不同，也就决定了类是否会被初始化。
-```
+```java
 class FinalTest
 {
     // 因为它在编译时就能确定，所以不会导致类的初始化，静态代码块也就不会被执行的 
@@ -112,7 +112,7 @@ public class Test2
 }
 ```
 
-```
+```java
 class Parent
 {
     static int a = 3;
@@ -146,7 +146,7 @@ public class Test4
     }
 }
 
----
+//---
 class Parent2
 {
     static int a = 3;
@@ -202,7 +202,7 @@ public class Test5
     处于安全原因考虑。
 
 ### 示例
-```
+```java
 public class Test1
 {
     public static void main(String[] args) throws Exception
