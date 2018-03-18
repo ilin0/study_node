@@ -7,4 +7,4 @@
     可以作为http服务器。并不是基于sverlet的规范，它并没有实际sverlet 的接口，
 
 
-    ServerBootstrap 通过java doc 可以了解到，它是一个允许轻松启动服务的管道
+    ServerBootstrap 通过java doc 可以了解到，它是一个允许轻松启动服务的管道，它就是一个辅助内，封装一些对象的初始化。 
