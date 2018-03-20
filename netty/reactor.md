@@ -57,13 +57,15 @@ class Server implements Runnable {
 ![image](https://github.com/ilin0/study_node/raw/master/netty/image/reactor2018031202.png)
 * step 1
 ```java
+//  reactor 1: setup 
 class Reactor implements Runnable {
     final Selector selector;
     final ServerSocketChannel serverSocket;
     Reactor(int port) throws IOException {
         selector = Selector.open();
-        serverSocket = ServerSocketChannel.open(); serverSocket.socket().bind(
-        new InetSocketAddress(port)); serverSocket.configureBlocking(false);
+        serverSocket = ServerSocketChannel.open(); 
+        serverSocket.socket().bind(new InetSocketAddress(port)); 
+        serverSocket.configureBlocking(false);
         SelectionKey sk =
           serverSocket.register(selector,SelectionKey.OP_ACCEPT);
         sk.attach(new Acceptor());
@@ -72,6 +74,7 @@ class Reactor implements Runnable {
 Alternatively, use explicit SPI provider: SelectorProvider p = SelectorProvider.provider(); selector = p.openSelector();
 serverSocket = p.openServerSocketChannel();
  */
+ // reactor 2 : dispatch loop
  // class Reactor continued
     public void run() {  // normally in a new Thread
         try {
@@ -94,7 +97,7 @@ serverSocket = p.openServerSocketChannel();
             r.run();
         }
     }
-
+    // reactor 3 : acceptor
     // class Reactor continued
     class Acceptor implements Runnable { // inner
         public void run() {
@@ -107,27 +110,101 @@ serverSocket = p.openServerSocketChannel();
         }
     } 
 }
+
+//Reactor 4: Handler setup
+final class Handler implements Runnable {
+    final SocketChannel socket;
+    final SelectionKey sk;
+    ByteBuffer input = ByteBuffer.allocate(MAXIN); 
+    ByteBuffer output = ByteBuffer.allocate(MAXOUT); 
+    static final int READING = 0, SENDING = 1;
+    int state = READING;
+    Handler(Selector sel, SocketChannel c) throws IOException {
+        socket = c; c.configureBlocking(false);
+        // Optionally try first read now
+        sk = socket.register(sel, 0); 
+        sk.attach(this); 
+
+        // 这一步对读事件感兴趣，把上面register 0的事件覆盖了。
+        sk.interestOps(SelectionKey.OP_READ); 
+        sel.wakeup();
+    }
+
+
+    boolean inputIsComplete() { /* ... */ } 
+    boolean outputIsComplete() { /* ... */ } 
+    void process() { /* ... */ }
+    
+    //http://gee.cs.oswego.edu
+    // Reactor 5: Request handling
+// class Handler continued
+    public void run() {
+        try {
+            if (state == READING){
+                read();
+            } else if (state == SENDING){
+                send();
+            } 
+        } catch (IOException ex) { /* ... */ }
+    }
+    void read() throws IOException {
+        socket.read(input);
+        if (inputIsComplete()) {
+            process();
+            state = SENDING;
+        // Normally also do first write now 
+            sk.interestOps( SelectionKey.OP_WRITE);
+        } 
+    }
+    void send() throws IOException { 
+        socket.write(output);
+        if (outputIsComplete()) {
+            sk.cancel();
+        }
+    } 
+}
 ```
 
+8. 多线程版本设计
+    * 策略性的增加了一些线程可伸缩性，用于多线程环境下。
+    * 快速的处理处理器，处理器会拖慢Reactor,将non-io移交其它处理器
+    * 多reactor线程，它可以处理io,将负载转移其它，实现cpu与io匹配
 
+9. Worker Threads
+    * 将non-io移交出去，加快reactor线程
+    * 使用线程池，可以调节和控制，比客户端的线程数量要少。
 
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/reactor2018032001.png)
 
+10. 使用线程池
+    主要的方法 execute(Runnable r)
+    * 任务队列的种类，任何一个Channel
+    * 最大、最小线程数
+    * 活跃的间隔时间
+    * 策略，阻塞、丢弃
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+11. 多线程 Reactor Threads
+    使用Reactor线程池
+    * 用于匹配cpu/io执行速率
+    * 可以静态或动态的构件，每一个reactor 都有自己的 selector,thread,dispatch loop
+    * 主接收器可以给reactor分发。
+```java
+    Selector[] selectors; // also create threads 
+    int next = 0;
+    class Acceptor { // ...
+        public synchronized void run() { 
+            //...
+            Socket connection = serverSocket.accept(); 
+            if (connection != null){
+                new Handler(selectors[next], connection); 
+            }
+            
+            if (++next == selectors.length) {
+                next = 0;
+            }
+            
+        } 
+    }
+```
+##### using multiple reactors 多个reactor 
+![image](https://github.com/ilin0/study_node/raw/master/netty/image/reactor2018032002.png)
