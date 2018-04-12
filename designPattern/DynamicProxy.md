@@ -12,7 +12,7 @@
     步骤：
 1. 创建一个实现接口InvocationHandler的类，它必须实现invoke方法
 2. 创建被代理的类以及接口。
-3. 通过Proxy的表态方法
+3. 通过Proxy的静态方法
 newProxyInstance(ClassLoader loader,Class<?>[] interfaces,InvocationHandler h)
 创建一个代理。
 4. 通过代理调用方法。
