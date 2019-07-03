@@ -35,4 +35,4 @@ static {
     Class.forName("")//加载驱动的这行方法都可以省略掉。
 4、DriverManager的getConnection方法
     它有if(isDriverAllowed(aDriver.driver, callerCL))判断
-    判断加载driver的加载器与调用这个类的加载器是不是同一个加载器。如果是才可能用，不是则不能尝试连接。这个提现在命名空间的问题，因为使用者可以很轻易的修改当前线程的加载器。
+    判断加载driver的加载器与调用这个类的加载器是不是同一个加载器。如果是才可能用，不是则不能尝试连接。这个体现在命名空间的问题，因为使用者可以很轻易的修改当前线程的加载器。
